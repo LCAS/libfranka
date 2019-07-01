@@ -57,21 +57,10 @@ class Network {
   typename T::Response tcpBlockingReceiveResponse(uint32_t command_id,
                                                   std::vector<uint8_t>* vl_buffer = nullptr);
 
-  /**
-   * Tries to receive a T::Response message with the given command ID (non-blocking).
-   *
-   * Additional variable-length data for the expected response (if any) is discarded.
-   *
-   * @param[in] command_id Expected command ID of the T::Response.
-   * @param[in] handler Callback to be invoked if the expected response has been received.
-   *
-   * @return True if a T::Response message with the given command_id has been received, false
-   * otherwise.
-   */
   template <typename T>
   bool tcpReceiveResponse(uint32_t command_id,
                           std::function<void(const typename T::Response&)> handler);
-
+ 
   template <typename T, typename... TArgs>
   uint32_t tcpSendRequest(TArgs&&... args);
 
@@ -250,6 +239,7 @@ typename T::Response Network::tcpBlockingReceiveResponse(uint32_t command_id,
   received_responses_.erase(it);
   return message.getInstance();
 }
+
 
 template <typename T, uint16_t kLibraryVersion>
 void connect(Network& network, uint16_t* ri_version) {
