@@ -60,7 +60,18 @@ class Network {
   template <typename T>
   bool tcpReceiveResponse(uint32_t command_id,
                           std::function<void(const typename T::Response&)> handler);
- 
+
+ /**
+   * Tries to receive a T::Response message with the given command ID (non-blocking).
+   *
+   * Additional variable-length data for the expected response (if any) is discarded.
+   *
+   * @param[in] command_id Expected command ID of the T::Response.
+   * @param[in] handler Callback to be invoked if the expected response has been received.
+   *
+   * @return True if a T::Response message with the given command_id has been received, false
+   * otherwise.
+   */ 
   template <typename T, typename... TArgs>
   uint32_t tcpSendRequest(TArgs&&... args);
 
