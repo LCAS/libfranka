@@ -54,7 +54,8 @@ class Network {
    * @return Received T::Response instance.
    */
   template <typename T>
-  typename T::Response tcpBlockingReceiveResponse(uint32_t command_id,
+  typename T::Response tcpBlockingReceiveResponse(uint32_t command_id, 
+						  std::vector<uint8_t>* vl_buffer = nullptr);
 
  /**
    * Tries to receive a T::Response message with the given command ID (non-blocking).
