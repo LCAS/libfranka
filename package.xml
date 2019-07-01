@@ -3,6 +3,7 @@
   <name>libfranka</name>
   <version>:{version}</version>
   <description>libfranka is a C++ library for Franka Emika research robots</description>
+  <maintainer email="marc@hanheide.net">Marc Hanheide</maintainer>
   <maintainer email="asrinivasan@lincoln.ac.uk">Aravinda Srinivasan</maintainer>
   <license>Apache 2.0</license>
 
