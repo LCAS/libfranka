@@ -55,11 +55,6 @@ class Network {
    */
   template <typename T>
   typename T::Response tcpBlockingReceiveResponse(uint32_t command_id,
-                                                  std::vector<uint8_t>* vl_buffer = nullptr);
-
-  template <typename T>
-  bool tcpReceiveResponse(uint32_t command_id,
-                          std::function<void(const typename T::Response&)> handler);
 
  /**
    * Tries to receive a T::Response message with the given command ID (non-blocking).
@@ -71,7 +66,11 @@ class Network {
    *
    * @return True if a T::Response message with the given command_id has been received, false
    * otherwise.
-   */ 
+   */
+  template <typename T>
+  bool tcpReceiveResponse(uint32_t command_id,
+                          std::function<void(const typename T::Response&)> handler);
+
   template <typename T, typename... TArgs>
   uint32_t tcpSendRequest(TArgs&&... args);
 
