@@ -158,13 +158,13 @@ install(EXPORT FrankaTargets
 # Ignore find_package(Franka) in subprojects.
 set(FRANKA_IS_FOUND TRUE)
 
-option(BUILD_TESTS "Build tests" ON)
+option(BUILD_TESTS "Build tests" OFF)
 if(BUILD_TESTS)
   enable_testing()
   add_subdirectory(test)
 endif()
 
-option(BUILD_EXAMPLES "Build example code" ON)
+option(BUILD_EXAMPLES "Build example code" OFF)
 if(BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif()
